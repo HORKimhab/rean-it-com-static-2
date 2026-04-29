@@ -13,3 +13,5 @@ coverage/
 src/app.js
 src/index.local.html
 scripts/encrypt.js
+
+.husky/

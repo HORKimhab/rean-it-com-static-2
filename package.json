@@ -16,7 +16,8 @@
     "install:hooks": "bash scripts/install-git-hooks.sh"
   },
   "devDependencies": {
-    "wrangler": "^4.13.2", 
-    "javascript-obfuscator": "^5.4.1"
+    "husky": "^9.1.7",
+    "javascript-obfuscator": "^5.4.1",
+    "wrangler": "^4.13.2"
   }
 }
