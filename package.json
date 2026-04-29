@@ -13,7 +13,8 @@
     "build:production": "npm run build:protected",
     "verify": "npm run build:protected && npm run deploy:dry-run",
     "prepush": "npm run verify",
-    "install:hooks": "bash scripts/install-git-hooks.sh"
+    "install:hooks": "bash scripts/install-git-hooks.sh",
+    "prepare": "husky"
   },
   "devDependencies": {
     "husky": "^9.1.7",
