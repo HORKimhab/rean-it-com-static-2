@@ -1,0 +1,21 @@
+"$schema" = "./node_modules/wrangler/config-schema.json"
+
+name = "rean-it-com-static-2"
+main = "src/index.js"
+compatibility_date = "2026-04-29"
+
+# Only upload the Worker entrypoint and files it explicitly imports.
+find_additional_modules = false
+
+[vars]
+PRIMARY_ORIGIN = "https://rean-it.com"
+
+[[rules]]
+type = "Text"
+globs = ["**/*.html"]
+fallthrough = true
+
+[[rules]]
+type = "Text"
+globs = ["**/*.protected.js"]
+fallthrough = true
