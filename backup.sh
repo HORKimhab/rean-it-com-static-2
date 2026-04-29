@@ -50,7 +50,10 @@ send_document() {
 compress_directory() {
   local source_dir="$1"
   local archive_path
-  archive_path="$(mktemp "${TMPDIR:-/tmp}/telegram-backup.XXXXXX.tar.gz")"
+  local archive_base
+  archive_base="$(mktemp -t telegram-backup)"
+  archive_path="${archive_base}.tar.gz"
+  mv "$archive_base" "$archive_path"
 
   tar -czf "$archive_path" -C "$(dirname "$source_dir")" "$(basename "$source_dir")"
   cleanup_files+=("$archive_path")
