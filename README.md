@@ -94,3 +94,8 @@ Then run:
 - `src/index.html`
 
 GitHub file selection is controlled separately by `.gitignore`.
+
+
+## TODO
+
+- [ ] Sync my Youtube Course dynamically 
