@@ -11,7 +11,7 @@ coverage/
 .DS_Store
 
 src/app.js
-src/index.local.html
+# src/index.local.html
 scripts/encrypt.js
 
 .husky/

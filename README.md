@@ -95,6 +95,26 @@ Then run:
 
 GitHub file selection is controlled separately by `.gitignore`.
 
+## Note
+
+``` bash
+# Template course thumbinal
+<div class="course-card cursor-pointer group" onclick="openCourse(0)">
+  <div class="aspect-[16/9] rounded-sm border border-gray-200 overflow-hidden mb-3 bg-gray-100">
+    <img
+      src="./images/course-java-spring.jpg"
+      alt="Java Spring Boot Full Stack course thumbnail"
+      class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+    >
+  </div>
+  <div class="min-w-0">
+    <h3 class="text-[17px] leading-tight font-semibold text-slate-800 mb-2 line-clamp-2 group-hover:text-brand-700 transition-colors">
+      Java Spring Boot Full Stack: eCommerce Project Masterclass
+    </h3>
+    <p class="text-sm text-slate-500 truncate">Faisal Memon (EmbarkX), EmbarkX Official</p>
+  </div>
+</div>
+```
 
 ## TODO
 
