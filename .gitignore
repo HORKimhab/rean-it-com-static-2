@@ -11,7 +11,15 @@ coverage/
 .DS_Store
 
 src/app.js
+
 # src/index.local.html
 scripts/encrypt.js
+scripts/build-youtube-courses.js
+scripts/sync-youtube-playlist.sh
+
+# tmp
+tmp
+
+youtube-playlist-overrides.example.json
 
 .husky/

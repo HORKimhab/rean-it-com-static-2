@@ -10,7 +10,10 @@
     "deploy": "wrangler deploy",
     "deploy:dry-run": "wrangler deploy --dry-run",
     "build:protected": "node scripts/encrypt.js",
+    "build:youtube-data": "node scripts/build-youtube-courses.js",
     "build:production": "npm run build:protected",
+    "sync:youtube": "bash scripts/sync-youtube-playlist.sh",
+    "sync:youtube:build": "npm run build:youtube-data",
     "verify": "npm run build:protected && npm run deploy:dry-run",
     "prepush": "npm run verify",
     "prepare": "husky"

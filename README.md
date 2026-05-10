@@ -118,4 +118,103 @@ GitHub file selection is controlled separately by `.gitignore`.
 
 ## TODO
 
-- [ ] Sync my Youtube Course dynamically 
+- [ ] Sync my Youtube Course dynamically, include correct playlist thumbinal, correct this thumbnailUrl, fit thumbinal on frontend 
+
+## YouTube playlist import
+
+Set `YOUTUBE_API_KEY` in your local Worker env before using the playlist import form.
+
+Example for `.dev.vars`:
+
+```bash
+YOUTUBE_API_KEY=your-youtube-data-api-key
+```
+
+The import endpoint is `GET /api/youtube/playlist?playlistId=...`.
+It preserves private or unavailable playlist entries when YouTube returns them, but it does not bypass YouTube access control.
+
+## Batch playlist sync script
+
+Use the bash script when you want to sync multiple playlists in one run and save the combined result to a JSON file.
+
+Examples:
+
+```bash
+bash scripts/sync-youtube-playlist.sh \
+  --playlist "https://www.youtube.com/playlist?list=PLxxxx" \
+  --playlist "PLyyyy" \
+  --output tmp/youtube-playlists.json \
+  --pretty
+
+
+bash scripts/sync-youtube-playlist.sh \
+  --playlist "PLJHKcCDS2DoFAdyJhJkza68NBJC_7sh6-" \
+  --output tmp/youtube-playlists.json \
+  --pretty
+```
+
+```bash
+npm run sync:youtube -- \
+  --input playlists.txt \
+  --output tmp/youtube-playlists.json \
+  --pretty
+```
+
+`playlists.txt` can contain one playlist URL or playlist ID per line. Blank lines and `#` comments are ignored.
+
+If YouTube does not expose the real playlist cover image you want, add manual overrides in:
+
+- `tmp/youtube-playlist-overrides.json`
+
+Example:
+
+```json
+{
+  "PLJHKcCDS2DoFAdyJhJkza68NBJC_7sh6-": {
+    "thumbnailUrl": "https://i.ytimg.com/pl_c/PLJHKcCDS2DoFAdyJhJkza68NBJC_7sh6-/studio_square_thumbnail.jpg?sqp=..."
+  }
+}
+```
+
+Or pass a custom override file:
+
+```bash
+bash scripts/sync-youtube-playlist.sh \
+  --playlist "PLJHKcCDS2DoFAdyJhJkza68NBJC_7sh6-" \
+  --overrides tmp/youtube-playlist-overrides.json \
+  --output tmp/youtube-playlists.json \
+  --pretty
+```
+
+The script:
+
+- reads `YOUTUBE_API_KEY` from the environment, `.dev.vars`, or `.env`
+- fetches playlist metadata, playlist items, and video durations
+- supports manual playlist thumbnail overrides
+- supports multiple playlist inputs in a single run
+- preserves private or unavailable items as placeholders when YouTube returns them
+
+## Build synced playlists into the app
+
+After the sync script writes `tmp/youtube-playlists.json`, generate the browser data file used by the static site:
+
+```bash
+npm run build:youtube-data
+```
+
+This creates:
+
+- `src/youtube-sync-data.js`
+
+The frontend loads that file automatically and merges the synced playlists into the course catalog.
+
+Typical workflow:
+
+```bash
+npm run sync:youtube -- \
+  --playlist "PLJHKcCDS2DoFAdyJhJkza68NBJC_7sh6-" \
+  --output tmp/youtube-playlists.json \
+  --pretty
+
+npm run build:youtube-data
+```

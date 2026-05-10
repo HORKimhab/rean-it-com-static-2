@@ -19,3 +19,8 @@ fallthrough = true
 type = "Text"
 globs = ["**/*.protected.js"]
 fallthrough = true
+
+[[rules]]
+type = "Text"
+globs = ["**/*.client.js", "**/youtube-sync-data.js"]
+fallthrough = true
