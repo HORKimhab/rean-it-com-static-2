@@ -49,10 +49,10 @@ export function CourseOverviewPage({ course }) {
         <section className="section section-divider">
           <div className="container">
             <div className="section-label">Content</div>
-            <div className="section-heading">
+            {/* <div className="section-heading">
               <h2 className="section-title">Course lessons</h2>
               <div className="course-list-count">{course.lessons.length} total</div>
-            </div>
+            </div> */}
 
             <div className="course-lesson-list">
               {course.lessons.map((lesson) => (

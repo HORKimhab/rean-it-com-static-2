@@ -323,8 +323,9 @@ function CourseCard({ course }) {
 
 export default function LandingPage({ courses }) {
   const catalogLabel = useMemo(() => {
-    if (courses.length <= 9) return "Popular courses";
-    return `Popular courses + ${courses.length - 9} synced playlist${courses.length - 9 > 1 ? "s" : ""}`;
+    // if (courses.length <= 9) return "Popular courses";
+    // return `Popular courses + ${courses.length - 9} synced playlist${courses.length - 9 > 1 ? "s" : ""}`;
+    return "";
   }, [courses.length]);
 
   return (
@@ -370,10 +371,10 @@ export default function LandingPage({ courses }) {
           <div className="container">
             <div className="section-label">Courses</div>
             <div className="section-heading">
-              <h2 className="section-title">{catalogLabel}</h2>
+              {/* <h2 className="section-title">{catalogLabel}</h2>
               <button className="round-button" aria-hidden="true">
                 {">"}
-              </button>
+              </button> */}
             </div>
 
             <div className="course-grid">
