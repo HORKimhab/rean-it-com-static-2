@@ -1,22 +1,21 @@
 {
   "name": "rean-it-com-static-2",
   "private": true,
-  "type": "module",
   "engines": {
     "node": "22"
   },
   "scripts": {
-    "dev": "wrangler dev",
-    "deploy": "wrangler deploy",
-    "deploy:dry-run": "wrangler deploy --dry-run",
-    "build:protected": "node scripts/encrypt.js",
-    "build:youtube-data": "node scripts/build-youtube-courses.js",
-    "build:production": "npm run build:protected",
-    "sync:youtube": "bash scripts/sync-youtube-playlist.sh",
-    "sync:youtube:build": "npm run build:youtube-data",
-    "verify": "npm run build:protected && npm run deploy:dry-run",
-    "prepush": "npm run verify",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "legacy:dev": "wrangler dev",
+    "legacy:deploy": "wrangler deploy",
     "prepare": "husky"
+  },
+  "dependencies": {
+    "next": "^9.3.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "husky": "^9.1.7",
