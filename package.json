@@ -1,8 +1,9 @@
 {
   "name": "rean-it-com-static-2",
   "private": true,
+  "packageManager": "pnpm@10.11.0",
   "engines": {
-    "node": "22"
+    "node": ">=24"
   },
   "scripts": {
     "dev": "next dev",
@@ -13,7 +14,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "next": "^9.3.3",
+    "next": "^15.5.19",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
