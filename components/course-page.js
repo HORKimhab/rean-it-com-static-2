@@ -9,6 +9,18 @@ function lessonTypeLabel(type) {
   return "Lesson";
 }
 
+function getLessonEmbedUrl(lesson) {
+  console.log('---lesson', lesson);
+  // if (!lesson.videoId || lesson.status === "private") return null;
+  return `https://www.youtube.com/embed/${lesson.videoId}?rel=0&modestbranding=1`;
+}
+
+function getLessonSummary(lesson) {
+  if (!lesson.description) return `Estimated watch time: ${lesson.dur}`;
+  if (lesson.description.startsWith("Watch on YouTube:")) return "Stream this lesson directly in the embedded YouTube player below.";
+  return lesson.description;
+}
+
 export function CourseOverviewPage({ course }) {
   const firstLesson = course.lessons[0];
 
@@ -82,6 +94,9 @@ export function CourseOverviewPage({ course }) {
 }
 
 export function LessonPage({ course, lesson }) {
+  const embedUrl = getLessonEmbedUrl(lesson);
+  const lessonSummary = getLessonSummary(lesson);
+
   return (
     <div className="site-shell course-shell-dark">
       <SiteHeader />
@@ -130,25 +145,47 @@ export function LessonPage({ course, lesson }) {
 
             <div className="player-main">
               <div className="player-stage">
-                <div className="player-stage-copy">
-                  <div className="player-stage-icon">{course.previewIcon || course.icon}</div>
-                  <div className="player-stage-title">{lesson.title}</div>
-                  <div className="player-stage-subtitle">{lesson.description}</div>
-                </div>
-                <div className="player-scrubber player-scrubber--static">
+                {embedUrl ? (
+                  <iframe
+                    className="player-embed"
+                    src={embedUrl}
+                    title={lesson.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    width="auto"
+                    allowFullScreen
+                  />
+                ) : (
+                  <div className="player-stage-copy">
+                    <div className="player-stage-icon">{course.previewIcon || course.icon}</div>
+                    <div className="player-stage-title">{lesson.title}</div>
+                    <div className="player-stage-subtitle">{lessonSummary}</div>
+                    {lesson.url ? (
+                      <a
+                        className="button button--primary player-stage-cta"
+                        href={lesson.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Open on YouTube
+                      </a>
+                    ) : null}
+                  </div>
+                )}
+                {/* <div className="player-scrubber player-scrubber--static">
                   <span>{lessonTypeLabel(lesson.type)}</span>
                   <div className="player-static-bar">
                     <div />
                   </div>
                   <span>{lesson.dur}</span>
-                </div>
+                </div> */}
               </div>
 
               <div className="player-detail">
                 <div className="player-detail-head">
                   <div>
                     <h2>{lesson.title}</h2>
-                    <p>{lesson.description || `Estimated watch time: ${lesson.dur}`}</p>
+                    <p>{lessonSummary}</p>
                   </div>
                   <Link className="mark-done mark-done--link" href={`/courses/${course.slug}`}>
                     Course overview
@@ -172,9 +209,16 @@ export function LessonPage({ course, lesson }) {
                   </div>
                   <div className="lesson-detail-card">
                     <h3>Resources</h3>
-                    {lesson.resources?.length ? (
+                    {lesson.resources?.length || lesson.url ? (
                       <ul className="player-resource-list">
-                        {lesson.resources.map((resource) => (
+                        {lesson.url ? (
+                          <li>
+                            <a href={lesson.url} target="_blank" rel="noreferrer">
+                              Watch on YouTube
+                            </a>
+                          </li>
+                        ) : null}
+                        {lesson.resources?.map((resource) => (
                           <li key={resource.label}>
                             <a href={resource.href} target="_blank" rel="noreferrer">
                               {resource.label}
