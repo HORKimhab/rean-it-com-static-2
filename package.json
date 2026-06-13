@@ -9,8 +9,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "legacy:dev": "wrangler dev",
-    "legacy:deploy": "wrangler deploy",
+    "legacy:dev": "wrangler dev -c wrangler.legacy.toml",
+    "legacy:deploy": "wrangler deploy -c wrangler.legacy.toml",
     "prepare": "husky"
   },
   "dependencies": {
