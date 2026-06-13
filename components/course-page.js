@@ -58,7 +58,8 @@ export function CourseOverviewPage({ course }) {
           </div>
         </section>
 
-        <section className="section section-divider">
+        {/* <section className="section section-divider"> */}
+        <section className="section">
           <div className="container">
             <div className="section-label">Content</div>
             {/* <div className="section-heading">
@@ -187,17 +188,17 @@ export function LessonPage({ course, lesson }) {
                     <h2>{lesson.title}</h2>
                     <p>{lessonSummary}</p>
                   </div>
-                  <Link className="mark-done mark-done--link" href={`/courses/${course.slug}`}>
+                  {/* <Link className="mark-done mark-done--link" href={`/courses/${course.slug}`}>
                     Course overview
-                  </Link>
+                  </Link> */}
                 </div>
 
-                <div className="player-tabs">
+                {/* <div className="player-tabs">
                   <button className="is-active" type="button">
                     about
                   </button>
                   <button type="button">resources</button>
-                </div>
+                </div> */}
 
                 <div className="lesson-detail-grid">
                   <div className="lesson-detail-card">

@@ -118,6 +118,7 @@ GitHub file selection is controlled separately by `.gitignore`.
 
 ## TODO
 
+- [x] Display course thumbinalUrl
 - [ ] Sync my Youtube Course dynamically, include correct playlist thumbinal, correct this thumbnailUrl, fit thumbinal on frontend 
 
 ## YouTube playlist import

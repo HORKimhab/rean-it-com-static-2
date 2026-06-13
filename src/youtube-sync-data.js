@@ -7,7 +7,7 @@ window.__YOUTUBE_SYNC_DATA__ = {
       "title": "Basic Python Course Khmer - python hkimhab",
       "instructor": "HOR Kimhab",
       "desc": "ជម្រើសសម្រាប់ការគាំទ្រមេរៀន - Support Charge Fee option - general: https://docs.google.com/document/d/1tbJ4ixauhNfxwV0HcUaiw7xQvQFLDLWrFDFzeEsePdM/edit?tab=t.gkl4rqoiwfnv\n\n- Contact: t.me/HKimhab\n\n📖 អ្វីដែលអ្នកនឹងសិក្សា: https://shorturl.at/jlDYH",
-      "thumbnailUrl": "https://i.ytimg.com/pl_c/PLJHKcCDS2DoFAdyJhJkza68NBJC_7sh6-/studio_square_thumbnail.jpg?sqp=CNvTgNAG-oaymwEICIAKENAFSFqi85f_AwYIwe6AwQY=&rs=AOn4CLDpNuoJERZlD3B9o_7Uy_FqzVaQHg",
+      "thumbnailUrl": "https://i.ytimg.com/pl_c/PLJHKcCDS2DoFAdyJhJkza68NBJC_7sh6-/studio_square_thumbnail.jpg?sqp=CIDbstEG-oaymwEICIAKENAFSFqi85f_AwYIwe6AwQY=&rs=AOn4CLBEAAH-bVjd6oyQ1ZSj0EsXoVgc3g",
       "badge": "YouTube Playlist",
       "icon": "▶️",
       "previewIcon": "📺",

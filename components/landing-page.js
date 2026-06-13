@@ -293,10 +293,21 @@ export function SiteFooter() {
 }
 
 function CourseCard({ course }) {
+  const hasThumbnail = typeof course.thumbnailUrl === "string" && course.thumbnailUrl.trim() !== "";
+  const mediaClassName = hasThumbnail
+    ? "course-card-media course-card-media--thumbnail"
+    : "course-card-media";
+
   return (
     <Link href={getCourseHref(course.slug)} className="course-card">
-      <div className="course-card-media" style={{ background: course.previewBackground }}>
-        {course.previewLayout === "split" ? (
+      <div className={mediaClassName} style={{ background: course.previewBackground }}>
+        {hasThumbnail ? (
+          <img
+            className="course-card-thumbnail"
+            src={course.thumbnailUrl}
+            alt={`${course.title} thumbnail`}
+          />
+        ) : course.previewLayout === "split" ? (
           <>
             <div className="course-preview-block">
               {course.previewLabel ? (
@@ -367,7 +378,8 @@ export default function LandingPage({ courses }) {
         </section>
         */}
 
-        <section id="courses" className="section section-divider">
+        {/* <section id="courses" className="section section-divider"> */}
+        <section id="courses" className="section">
           <div className="container">
             <div className="section-label">Courses</div>
             <div className="section-heading">
