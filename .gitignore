@@ -24,3 +24,6 @@ tmp
 youtube-playlist-overrides.example.json
 
 .husky/
+
+# pnpm 
+.pnpm-store
