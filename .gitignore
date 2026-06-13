@@ -27,3 +27,6 @@ youtube-playlist-overrides.example.json
 
 # pnpm 
 .pnpm-store
+
+# Build 
+out

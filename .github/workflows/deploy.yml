@@ -1,4 +1,4 @@
-name: Deploy Worker
+name: Deploy Legacy Worker
 
 on:
   workflow_dispatch:
@@ -12,7 +12,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
-      - name: Deploy to Cloudflare Workers
+      - name: Deploy legacy Worker entrypoint
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
