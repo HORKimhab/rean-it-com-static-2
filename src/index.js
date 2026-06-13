@@ -1,5 +1,5 @@
 import indexHtml from "./index.html";
-import appJs from "./app.js";
+// import appJs from "./app.js";
 import protectedApp from "./app.protected.js";
 import youtubeSyncDataJs from "./youtube-sync-data.js";
 
@@ -237,12 +237,12 @@ export default {
       return handlePlaylistRequest(request, env);
     }
 
-    if (url.pathname === "/app.js") {
-      return new Response(request.method === "HEAD" ? null : appJs, {
-        status: 200,
-        headers: JS_HEADERS,
-      });
-    }
+    // if (url.pathname === "/app.js") {
+    //   return new Response(request.method === "HEAD" ? null : appJs, {
+    //     status: 200,
+    //     headers: JS_HEADERS,
+    //   });
+    // }
 
     if (url.pathname === "/youtube-sync-data.js") {
       return new Response(request.method === "HEAD" ? null : youtubeSyncDataJs, {
